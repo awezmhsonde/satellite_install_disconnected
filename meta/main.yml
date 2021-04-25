@@ -9,8 +9,8 @@ galaxy_info:
      versions:
      - all
   galaxy_tags: 
-   - red hat satellite
-   - disconnected satellite
+   - satellite
+   - disconnected
    - foreman
    - katello
    - pulp
