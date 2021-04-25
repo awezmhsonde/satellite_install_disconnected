@@ -1,0 +1,13 @@
+---
+##Configure satellite using Answer file
+- name: Copying answer file for Satellite configuration
+  template:
+    src: satellite-answers.j2
+    dest: /etc/foreman-installer/scenarios.d/satellite-answers.yaml
+
+- name: Configure satellite server
+  command: 'satellite-installer --scenario satellite'
+  environment:
+    LANG: en_US.UTF-8
+  register: sat_output
+

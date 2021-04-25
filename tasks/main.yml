@@ -1,0 +1,15 @@
+---
+# Main tasks file for satellite_install
+
+- name: Configure the prerequisites
+  include_tasks: sat_install_prereq.yml
+
+- name: Create repos for disconnected install
+  include_tasks: sat_install_repo.yml
+
+- name: Update the system and Install Satellite packages
+  include_tasks: sat_install_packages.yml
+
+- name: Configure the satellite Installation
+  include_tasks: sat_install_configure.yml
+

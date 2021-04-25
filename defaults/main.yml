@@ -1,0 +1,46 @@
+---
+# defaults file for satellite_install_disconnected
+satellite_hostname: 'sat.example.local'
+#
+#Location of the satellite and rhel disk
+#The output can be seen using 'lsblk' in case of multiple attached cdroms
+#Eg: rhel_disk_location : '/home/rhel7-Server-DVD.iso' or sat_disk_location: '/dev/sr0'
+disk_location:
+  - name: satellite
+    disk_loc: /dev/sr1
+    mount_loc: /media/sat6
+  - name: rhel
+    mount_loc: /media/rhel7-server
+    disk_loc: /dev/sr0
+sat_role_path: /etc/ansible/roles
+sat_loc: Dubai
+sat_org: RedHat
+sat_username: admin
+sat_password: redhat
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

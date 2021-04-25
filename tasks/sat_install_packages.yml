@@ -1,0 +1,38 @@
+---
+- name: Importing GPG keys
+  rpm_key:
+    state: present
+    key: /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+
+- name: Update the packages
+  yum:
+    name: '*'
+    state: latest
+
+#Installing satellite packages
+- name: Install Satellite packages using install_packages script
+  block:
+  - name: Install satellite packages
+    shell: exec "{{ item.mount_loc + '/install_packages' }}"
+    loop: "{{ disk_location }}"
+    when: "item.name == 'satellite'"
+    tags:
+      - install_script
+  rescue:
+    - name: Implementing workaround for Satellite selinux policy issue
+      copy:
+        src: "{{ item }}"
+        dest: '/root/'
+      loop:
+        - 'selinux-policy-3.13.1-268.el7_9.2.noarch.rpm'
+        - 'selinux-policy-targeted-3.13.1-268.el7_9.2.noarch.rpm'
+
+    - name: Installing the selinux files
+      command: 'yum localinstall /root/selinux-policy-3.13.1-268.el7_9.2.noarch.rpm /root/selinux-policy-targeted-3.13.1-268.el7_9.2.noarch.rpm -y'
+      args:  
+        warn: false
+
+    - name: Install satellite
+      yum:
+        name: satellite
+        state: present

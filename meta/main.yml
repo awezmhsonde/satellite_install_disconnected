@@ -1,0 +1,21 @@
+galaxy_info:
+  author: Awez Sonde
+  description: A role to install Satellite server with default SSL certs in a disconnected setup
+  company: Red Hat, Inc
+  license: GPLv3
+  min_ansible_version: 2.9
+  platforms:
+   - name: Fedora
+     versions:
+     - 7
+
+  galaxy_tags: 
+   - Red Hat satellite
+   - Disconnected Satellite
+   - Foreman
+   - Katello
+   - Pulp
+   - Hammer
+
+dependencies: []
+  

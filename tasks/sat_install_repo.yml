@@ -1,0 +1,33 @@
+---
+#Setting up repos
+- name: Creating the repo files
+  yum_repository:
+    name: "{{ item.name }}"
+    description: Repository for {{ item.name }} packages
+    baseurl: "{{ 'file://' + item.mount_loc }}"
+    gpgcheck: no
+  loop: "{{ disk_location }}"
+  tags:
+    - create_repo
+
+- name: Create RHSCL repo
+  yum_repository:
+    name: RHSCL-local
+    description: Repository for RHSCL-local packages
+    baseurl: "{{ 'file://' + item.mount_loc + '/RHSCL' }}"
+    gpgcheck: no
+    file: "{{ item.name }}"
+  when: "item.name == 'satellite'"
+  loop: "{{ disk_location }}"
+  tags:
+    - rhscl_repo
+
+- name: Create satellite maintenance repo
+  yum_repository:
+    name: sat-maintenance-local
+    description: Repository for sat-maintenance-local packages
+    baseurl: "{{ 'file://' + item.mount_loc + '/sat-maintenance' }}"
+    gpgcheck: no
+    file: "{{ item.name }}"
+  when: "item.name == 'satellite'"
+  loop: "{{ disk_location }}"
