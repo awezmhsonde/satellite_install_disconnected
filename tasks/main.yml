@@ -12,4 +12,3 @@
 
 - name: Configure the satellite Installation
   include_tasks: sat_install_configure.yml
-

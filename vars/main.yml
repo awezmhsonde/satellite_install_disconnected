@@ -1,10 +1,7 @@
 ---
 # vars file for satellite_install
-
 #Hostname for the satellite server
 #satellite_hostname: 'sat.awezlab.local'
-
-
 #Location of the satellite and rhel disk
 #The output can be seen using 'lsblk' in case of multiple attached cdroms
 #Eg: rhel_disk_location : '/home/rhel7-Server-DVD.iso' or sat_disk_location: '/dev/sr0' 
@@ -20,8 +17,3 @@
 #sat_org: RedHat
 #sat_username: awez
 #sat_password: redhat
-
-
- 
-
-

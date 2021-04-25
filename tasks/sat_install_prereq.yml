@@ -38,5 +38,3 @@
     permanent: yes
     state: enabled
     immediate: yes
-
-
