@@ -12,7 +12,7 @@
 - name: Install Satellite packages using install_packages script
   block:
   - name: Install satellite packages
-    shell: exec "{{ item.mount_loc + '/install_packages' }}"
+    command: "{{ item.mount_loc + '/install_packages' }}"
     loop: "{{ disk_location }}"
     when: "item.name == 'satellite'"
   rescue:
@@ -20,6 +20,8 @@
       copy:
         src: "{{ item }}"
         dest: '/root/'
+        owner: root
+        mode: '0600'
       loop:
         - 'selinux-policy-3.13.1-268.el7_9.2.noarch.rpm'
         - 'selinux-policy-targeted-3.13.1-268.el7_9.2.noarch.rpm'

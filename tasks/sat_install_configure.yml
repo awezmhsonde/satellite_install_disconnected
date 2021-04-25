@@ -4,6 +4,8 @@
   template:
     src: satellite-answers.j2
     dest: /etc/foreman-installer/scenarios.d/satellite-answers.yaml
+    owner: root
+    mode: '0600'
 - name: Configure satellite server
   command: 'satellite-installer --scenario satellite'
   environment:
