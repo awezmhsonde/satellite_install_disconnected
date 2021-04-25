@@ -25,6 +25,7 @@ Supported Distributions
 -----------------------
 
 *RHEL/CentOS 7.7
+
 *RHEL/CentOS 7.8
 
 
@@ -80,8 +81,7 @@ Example playbook to setup the Satellite server using its credentials from an  [A
   - playbook_sensitive_data.yml
 
   roles:
-  - role: satellite_installation_disconnected
-    state: present
+  - satellite_install_disconnected
 ```
 
 Once executed , the satellite server will be available to browse at the satellite_hostname variable ( subject to host resolution ) or the IP address 

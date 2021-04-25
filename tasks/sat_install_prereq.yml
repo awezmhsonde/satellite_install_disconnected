@@ -9,7 +9,7 @@
   lineinfile:
     path: /etc/hosts
     regexp: '^127\.0\.0\.1'
-    line: '127.0.0.1 {{ satellite_hostname}} localhost'
+    line: '127.0.0.1 {{ satellite_hostname }} localhost'
     state: present
 
 #Mounting the disks
