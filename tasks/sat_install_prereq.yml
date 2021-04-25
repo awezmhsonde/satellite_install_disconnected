@@ -1,17 +1,14 @@
 ---
 #Common prerequisites before package installations
-
 - name: set the hostname
   hostname:
     name: "{{ satellite_hostname }}"
-
 - name: Adding hostname to /etc/hosts file
   lineinfile:
     path: /etc/hosts
     regexp: '^127\.0\.0\.1'
     line: '127.0.0.1 {{ satellite_hostname }} localhost'
     state: present
-
 #Mounting the disks
 - name: Creating directories to mount
   file:
@@ -22,7 +19,6 @@
   ignore_errors: yes
   when: ansible_mounts == item.mount_loc
   tags: dir_create
-
 - name: Mounting the sat and rhel iso's
   mount:
     path: "{{ item.mount_loc }}"
@@ -31,7 +27,6 @@
     fstype: iso9660
     opts: ro,noauto
   loop: "{{ disk_location }}"
-
 - name: Enable Satellite ports for Web Access
   firewalld:
     service: RH-Satellite-6
