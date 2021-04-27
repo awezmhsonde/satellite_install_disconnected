@@ -7,6 +7,6 @@
     owner: root
     mode: '0600'
 - name: Configure satellite server
-  command: 'satellite-installer --scenario satellite'
+  shell: satellite-installer --scenario satellite
   environment:
     LANG: en_US.UTF-8
